@@ -2,535 +2,425 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#0a0e27">
-    <meta name="description" content="Fikr Shield - Your daily shield against time-wasting. Build discipline, track progress, stay accountable.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0d1b2a">
+    <meta name="description" content="Fikr Shield - Your daily shield against time-wasting. Build self-discipline, earn Sadaqah rewards, and protect your soul.">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Fikr Shield">
+    <meta name="format-detection" content="telephone=no">
     <base href="/fikr-shield/">
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="icons/icon-192.png">
     <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
-    <title>Fikr Shield - Self Discipline & Accountability</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png">
+    <title>Fikr Shield - Protect Your Soul</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Splash Screen -->
+
+    <!-- ==================== SPLASH SCREEN ==================== -->
     <div class="splash-screen" id="splashScreen">
         <div class="splash-content">
-            <div class="splash-icon">🛡️</div>
+            <div class="splash-icon-animated">🛡️</div>
             <h1 class="splash-title">Fikr Shield</h1>
-            <p class="splash-subtitle">Your Daily Protection</p>
-            <div class="splash-loader"></div>
+            <p class="splash-subtitle">Protect Your Soul</p>
+            <p class="splash-arabic">وَجَاهِدُوا فِي اللَّهِ</p>
+            <div class="splash-loader">
+                <div class="loader-ring"></div>
+            </div>
         </div>
     </div>
 
-    <!-- Main App Container -->
+    <!-- ==================== MAIN APP CONTAINER ==================== -->
     <div class="app-container" id="appContainer" style="display:none;">
         
-        <!-- Top Navigation -->
-        <nav class="bottom-nav">
-            <button class="nav-btn active" data-tab="home" aria-label="Home">
-                <span class="nav-icon">🛡️</span>
-                <span class="nav-label">Shield</span>
-            </button>
-            <button class="nav-btn" data-tab="analytics" aria-label="Analytics">
-                <span class="nav-icon">📊</span>
-                <span class="nav-label">Analytics</span>
-            </button>
-            <button class="nav-btn" data-tab="community" aria-label="Community">
-                <span class="nav-icon">👥</span>
-                <span class="nav-label">Community</span>
-            </button>
-            <button class="nav-btn" data-tab="settings" aria-label="Settings">
-                <span class="nav-icon">⚙️</span>
-                <span class="nav-label">Settings</span>
-            </button>
-        </nav>
-
-        <!-- ==================== HOME TAB ==================== -->
-        <div class="tab-content active" id="homeTab">
-            <header class="header">
-                <div class="app-branding">
-                    <span class="brand-icon">🛡️</span>
-                    <h1 class="brand-name">Fikr Shield</h1>
+        <!-- ==================== HEADER ==================== -->
+        <header class="main-header">
+            <div class="header-top">
+                <div class="app-logo">🛡️</div>
+                <div class="header-info">
+                    <h1 class="app-title">Fikr Shield</h1>
+                    <p class="arabic-text">وَجَاهِدُوا فِي اللَّهِ حَقَّ جِهَادِهِ</p>
+                    <p class="translation">"And strive for Allah with the striving due to Him" - Quran 22:78</p>
                 </div>
-                <p class="subtitle">Your shield against distractions</p>
-                
-                <!-- Quick Stats -->
-                <div class="quick-stats">
-                    <div class="stat-mini-card">
-                        <span class="stat-value" id="streakCount">0</span>
-                        <span class="stat-label">Day Streak</span>
-                    </div>
-                    <div class="stat-mini-card">
-                        <span class="stat-value" id="totalHoursSaved">0</span>
-                        <span class="stat-label">Hours Saved</span>
-                    </div>
-                    <div class="stat-mini-card">
-                        <span class="stat-value" id="accountabilityPartners">0</span>
-                        <span class="stat-label">Partners</span>
-                    </div>
-                </div>
-            </header>
-
-            <main class="task-section">
-                <div class="date-display" id="dateDisplay"></div>
-                
-                <!-- Reminder Status Bar -->
-                <div class="reminder-status-bar" id="reminderStatusBar">
-                    <span class="reminder-dot active"></span>
-                    <span id="reminderStatusText">Evening reminder set for 9:00 PM</span>
-                    <button class="reminder-edit-btn" id="editReminderBtn">Edit</button>
-                </div>
-
-                <!-- Main Commitment Card -->
-                <div class="commitment-card" id="commitmentCard">
-                    <div class="card-glow"></div>
-                    
-                    <!-- Mood Check-in -->
-                    <div class="mood-section">
-                        <h3>How do you feel right now?</h3>
-                        <div class="mood-grid">
-                            <button class="mood-btn" data-mood="motivated" title="Motivated">
-                                <span class="mood-emoji">🔥</span>
-                                <span class="mood-text">Motivated</span>
-                            </button>
-                            <button class="mood-btn" data-mood="focused" title="Focused">
-                                <span class="mood-emoji">🎯</span>
-                                <span class="mood-text">Focused</span>
-                            </button>
-                            <button class="mood-btn" data-mood="neutral" title="Neutral">
-                                <span class="mood-emoji">😐</span>
-                                <span class="mood-text">Neutral</span>
-                            </button>
-                            <button class="mood-btn" data-mood="struggling" title="Struggling">
-                                <span class="mood-emoji">😔</span>
-                                <span class="mood-text">Struggling</span>
-                            </button>
-                            <button class="mood-btn" data-mood="tempted" title="Tempted">
-                                <span class="mood-emoji">😈</span>
-                                <span class="mood-text">Tempted</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Progress Ring -->
-                    <div class="progress-ring-container">
-                        <svg class="progress-ring" viewBox="0 0 200 200">
-                            <defs>
-                                <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" style="stop-color:#4ecca3;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#4ecdc4;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <circle class="progress-ring-bg" stroke="#1a1a3e" stroke-width="10" fill="transparent" r="90" cx="100" cy="100"/>
-                            <circle class="progress-ring-circle" id="progressRing" stroke="url(#progressGradient)" stroke-width="10" fill="transparent" r="90" cx="100" cy="100" stroke-linecap="round"/>
-                        </svg>
-                        <div class="progress-center">
-                            <span class="progress-percentage" id="progressText">0%</span>
-                            <span class="progress-label">Complete</span>
-                        </div>
-                    </div>
-
-                    <!-- Time Wasters Checklist -->
-                    <div class="checklist-section">
-                        <h3>🛡️ Shields Active Today</h3>
-                        <div class="checklist-grid">
-                            <label class="checklist-card">
-                                <input type="checkbox" id="shield1" class="shield-checkbox">
-                                <div class="checklist-card-content">
-                                    <span class="shield-icon-small">📱</span>
-                                    <div class="shield-info">
-                                        <strong>Mindless Scrolling</strong>
-                                        <span class="time-saved-indicator">~2h saved</span>
-                                    </div>
-                                    <div class="custom-checkbox"></div>
-                                </div>
-                            </label>
-                            
-                            <label class="checklist-card">
-                                <input type="checkbox" id="shield2" class="shield-checkbox">
-                                <div class="checklist-card-content">
-                                    <span class="shield-icon-small">💬</span>
-                                    <div class="shield-info">
-                                        <strong>Social Media</strong>
-                                        <span class="time-saved-indicator">~1.5h saved</span>
-                                    </div>
-                                    <div class="custom-checkbox"></div>
-                                </div>
-                            </label>
-                            
-                            <label class="checklist-card">
-                                <input type="checkbox" id="shield3" class="shield-checkbox">
-                                <div class="checklist-card-content">
-                                    <span class="shield-icon-small">🎮</span>
-                                    <div class="shield-info">
-                                        <strong>Entertainment</strong>
-                                        <span class="time-saved-indicator">~2.5h saved</span>
-                                    </div>
-                                    <div class="custom-checkbox"></div>
-                                </div>
-                            </label>
-                            
-                            <label class="checklist-card">
-                                <input type="checkbox" id="shield4" class="shield-checkbox">
-                                <div class="checklist-card-content">
-                                    <span class="shield-icon-small">🔞</span>
-                                    <div class="shield-info">
-                                        <strong>Adult Content</strong>
-                                        <span class="time-saved-indicator">~1h saved</span>
-                                    </div>
-                                    <div class="custom-checkbox"></div>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Time Saved Summary -->
-                    <div class="time-saved-summary">
-                        <span class="summary-icon">⏱️</span>
-                        <div class="summary-details">
-                            <span class="summary-label">Time Protected Today</span>
-                            <strong class="summary-value" id="timeSavedToday">0 hours</strong>
-                        </div>
-                    </div>
-
-                    <!-- Commitment Button -->
-                    <button class="commit-button" id="commitButton">
-                        <span class="button-content">
-                            <span class="button-icon">🛡️</span>
-                            <span class="button-text">Activate Daily Shield</span>
-                        </span>
-                    </button>
-
-                    <!-- Bedtime Check-in -->
-                    <div class="bedtime-section">
-                        <h3>🌙 Bedtime Reflection</h3>
-                        <p>Before sleeping, confirm your victory for today</p>
-                        
-                        <!-- Quick Journal -->
-                        <div class="journal-quick">
-                            <textarea id="journalEntry" placeholder="How was your day? Any challenges faced? How did you overcome them? (Optional)" maxlength="500"></textarea>
-                            <div class="journal-actions">
-                                <span class="char-count"><span id="charCount">0</span>/500</span>
-                                <button class="btn btn-small btn-save" id="saveJournalBtn">Save Reflection</button>
-                            </div>
-                        </div>
-                        
-                        <div class="bedtime-actions">
-                            <button class="btn btn-success" id="bedtimeConfirm">
-                                ✅ Day Complete - Shield Held Strong!
-                            </button>
-                            <button class="btn btn-warning" id="bedtimeReflect">
-                                🤔 Need to Reflect & Improve
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Achievement Toast -->
-                <div class="achievement-toast" id="achievementToast">
-                    <div class="toast-content">
-                        <span class="toast-icon">🏆</span>
-                        <div class="toast-message">
-                            <strong id="achievementTitle">Achievement Unlocked!</strong>
-                            <p id="achievementMessage">Great job!</p>
-                        </div>
-                    </div>
-                </div>
-            </main>
-
-            <!-- Daily Inspiration -->
-            <div class="inspiration-bar">
-                <span class="quote-mark">"</span>
-                <p id="dailyQuote">Discipline is the bridge between goals and accomplishment.</p>
-                <span class="quote-author" id="quoteAuthor">- Jim Rohn</span>
+                <button class="header-menu-btn" id="viewStatsBtn" title="View Statistics">📊</button>
             </div>
+            
+            <!-- Quick Stats Cards -->
+            <div class="stats-row">
+                <div class="stat-card streak">
+                    <span class="stat-icon">🔥</span>
+                    <span class="stat-value" id="currentStreak">0</span>
+                    <span class="stat-label">Day Streak</span>
+                </div>
+                <div class="stat-card protected">
+                    <span class="stat-icon">🛡️</span>
+                    <span class="stat-value" id="monthlyProtected">0</span>
+                    <span class="stat-label">This Month</span>
+                </div>
+                <div class="stat-card reward">
+                    <span class="stat-icon">🎁</span>
+                    <span class="stat-value" id="rewardsEarned">0</span>
+                    <span class="stat-label">Rewards</span>
+                </div>
+                <div class="stat-card best">
+                    <span class="stat-icon">⭐</span>
+                    <span class="stat-value" id="bestStreak">0</span>
+                    <span class="stat-label">Best Streak</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- ==================== NOTIFICATION STATUS BAR ==================== -->
+        <div class="notification-bar" id="notificationBar">
+            <span class="notif-dot" id="notifDot"></span>
+            <span class="notif-icon">⏰</span>
+            <span id="notificationStatus">Loading...</span>
+            <button class="notif-settings-btn" id="openSettingsBtn">⚙️ Settings</button>
         </div>
 
-        <!-- ==================== ANALYTICS TAB ==================== -->
-        <div class="tab-content" id="analyticsTab">
-            <div class="analytics-header">
-                <h2>📊 Your Progress Analytics</h2>
-                <div class="date-range-selector">
-                    <button class="range-btn active" data-range="week">Week</button>
-                    <button class="range-btn" data-range="month">Month</button>
-                    <button class="range-btn" data-range="year">Year</button>
+        <!-- ==================== CALENDAR SECTION ==================== -->
+        <section class="calendar-section">
+            <div class="calendar-header">
+                <button class="month-nav" id="prevMonth" aria-label="Previous month">◀</button>
+                <div class="month-year-group">
+                    <h2 id="monthYearDisplay">January 2025</h2>
+                    <button class="today-btn" id="todayBtn">Today</button>
                 </div>
+                <button class="month-nav" id="nextMonth" aria-label="Next month">▶</button>
             </div>
-
-            <!-- Stats Overview -->
-            <div class="analytics-overview">
-                <div class="overview-card">
-                    <span class="overview-icon">📅</span>
-                    <div class="overview-info">
-                        <span class="overview-value" id="analyticsTotalDays">0</span>
-                        <span class="overview-label">Total Days</span>
-                    </div>
-                </div>
-                <div class="overview-card highlight">
-                    <span class="overview-icon">🔥</span>
-                    <div class="overview-info">
-                        <span class="overview-value" id="analyticsBestStreak">0</span>
-                        <span class="overview-label">Best Streak</span>
-                    </div>
-                </div>
-                <div class="overview-card">
-                    <span class="overview-icon">✅</span>
-                    <div class="overview-info">
-                        <span class="overview-value" id="analyticsSuccessRate">0%</span>
-                        <span class="overview-label">Success Rate</span>
-                    </div>
-                </div>
-                <div class="overview-card">
-                    <span class="overview-icon">⏰</span>
-                    <div class="overview-info">
-                        <span class="overview-value" id="analyticsTotalHours">0</span>
-                        <span class="overview-label">Hours Saved</span>
-                    </div>
-                </div>
+            
+            <!-- Day Labels -->
+            <div class="day-labels">
+                <span>Sun</span>
+                <span>Mon</span>
+                <span>Tue</span>
+                <span>Wed</span>
+                <span>Thu</span>
+                <span class="friday-label">Fri</span>
+                <span>Sat</span>
             </div>
-
-            <!-- Charts Section -->
-            <div class="charts-section">
-                <div class="chart-container">
-                    <h3>Completion Streak</h3>
-                    <canvas id="streakChart"></canvas>
-                </div>
-                
-                <div class="chart-container">
-                    <h3>Time Wasters Breakdown</h3>
-                    <canvas id="timeWastersChart"></canvas>
-                </div>
-                
-                <div class="chart-container">
-                    <h3>Mood Tracking</h3>
-                    <canvas id="moodChart"></canvas>
-                </div>
-                
-                <div class="chart-container">
-                    <h3>Hourly Productivity Pattern</h3>
-                    <canvas id="productivityChart"></canvas>
-                </div>
+            
+            <!-- Calendar Grid -->
+            <div class="calendar-grid" id="calendarGrid">
+                <!-- Dynamically generated by JavaScript -->
             </div>
-
-            <!-- Calendar Heatmap -->
-            <div class="calendar-heatmap">
-                <h3>Activity Heatmap</h3>
-                <div class="heatmap-container" id="heatmapContainer"></div>
-                <div class="heatmap-legend">
-                    <span>Less</span>
-                    <div class="legend-gradient"></div>
-                    <span>More</span>
-                </div>
+            
+            <!-- Calendar Legend -->
+            <div class="calendar-legend">
+                <span><span class="legend-box protected"></span> Protected</span>
+                <span><span class="legend-box missed"></span> Missed</span>
+                <span><span class="legend-box today-box"></span> Today</span>
+                <span><span class="legend-box future"></span> Future</span>
+                <span><span class="legend-dot"></span> Reflection</span>
             </div>
+        </section>
 
-            <!-- Export Button -->
-            <div class="export-section">
-                <button class="btn btn-primary" id="exportAnalyticsBtn">
-                    📥 Export Analytics Report
+        <!-- ==================== MONTHLY PROGRESS ==================== -->
+        <section class="progress-section">
+            <h3>📊 Monthly Progress</h3>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="monthlyProgressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <p class="progress-text" id="monthlyProgressText">Protected: 0/30 days (0%)</p>
+        </section>
+
+        <!-- ==================== MOOD TRACKING ==================== -->
+        <section class="mood-section">
+            <h3>😊 How are you feeling today?</h3>
+            <div class="mood-grid">
+                <button class="mood-btn" data-mood="motivated" title="Motivated">
+                    <span class="mood-emoji">🔥</span>
+                    <span class="mood-label">Motivated</span>
+                </button>
+                <button class="mood-btn" data-mood="focused" title="Focused">
+                    <span class="mood-emoji">🎯</span>
+                    <span class="mood-label">Focused</span>
+                </button>
+                <button class="mood-btn" data-mood="grateful" title="Grateful">
+                    <span class="mood-emoji">🤲</span>
+                    <span class="mood-label">Grateful</span>
+                </button>
+                <button class="mood-btn" data-mood="peaceful" title="Peaceful">
+                    <span class="mood-emoji">😌</span>
+                    <span class="mood-label">Peaceful</span>
+                </button>
+                <button class="mood-btn" data-mood="strong" title="Strong">
+                    <span class="mood-emoji">💪</span>
+                    <span class="mood-label">Strong</span>
+                </button>
+                <button class="mood-btn" data-mood="struggling" title="Struggling">
+                    <span class="mood-emoji">😔</span>
+                    <span class="mood-label">Struggling</span>
+                </button>
+                <button class="mood-btn" data-mood="tempted" title="Tempted">
+                    <span class="mood-emoji">😈</span>
+                    <span class="mood-label">Tempted</span>
+                </button>
+                <button class="mood-btn" data-mood="anxious" title="Anxious">
+                    <span class="mood-emoji">😰</span>
+                    <span class="mood-label">Anxious</span>
                 </button>
             </div>
-        </div>
+        </section>
 
-        <!-- ==================== COMMUNITY TAB ==================== -->
-        <div class="tab-content" id="communityTab">
-            <div class="community-header">
-                <h2>👥 Accountability Community</h2>
-                <p>Stay accountable together</p>
-            </div>
-
-            <!-- Accountability Partners -->
-            <div class="partners-section">
-                <h3>Your Accountability Partners</h3>
-                <div class="partners-list" id="partnersList">
-                    <div class="partner-card empty">
-                        <span class="empty-icon">🤝</span>
-                        <p>No partners yet. Add accountability partners to stay motivated!</p>
-                        <button class="btn btn-primary" id="addPartnerBtn">+ Add Partner</button>
+        <!-- ==================== TODAY'S ACTION CARD ==================== -->
+        <section class="today-action" id="todayAction">
+            <div class="action-card" id="actionCard">
+                <div class="action-glow"></div>
+                <div class="action-content">
+                    <span class="action-icon" id="actionIcon">🌙</span>
+                    <h3>Today's Shield</h3>
+                    <p id="actionMessage">Activate your shield for protection tonight</p>
+                    <div class="action-buttons">
+                        <button class="shield-activate-btn" id="shieldActivateBtn">
+                            <span class="btn-icon">🛡️</span>
+                            <span class="btn-text">ACTIVATE SHIELD</span>
+                        </button>
                     </div>
+                    <p class="action-time" id="actionTime">Complete before midnight</p>
                 </div>
             </div>
+            
+            <!-- Reflection Box (hidden by default) -->
+            <div class="reflection-box" id="reflectionBox" style="display:none;">
+                <div class="reflection-header">
+                    <span>✨</span>
+                    <h3>Shield Active Today!</h3>
+                </div>
+                <p class="reflection-subtitle">Alhamdulillah! You protected yourself today.</p>
+                <textarea id="reflectionInput" placeholder="Optional: Write a brief reflection...&#10;&#10;What helped you stay strong today?&#10;Any challenges you overcame?&#10;What are you grateful for?" maxlength="300"></textarea>
+                <div class="reflection-char-count">
+                    <span id="reflectionCharCount">0</span>/300
+                </div>
+                <div class="reflection-actions">
+                    <button class="save-reflection-btn" id="saveReflectionBtn">💾 Save Reflection</button>
+                    <button class="skip-reflection-btn" id="skipReflectionBtn">Skip</button>
+                </div>
+            </div>
+        </section>
 
-            <!-- Add Partner Modal -->
-            <div class="modal" id="addPartnerModal" style="display:none;">
-                <div class="modal-content">
-                    <h3>Add Accountability Partner</h3>
-                    <div class="partner-code-section">
-                        <div class="code-display">
-                            <span class="code-label">Your Share Code:</span>
-                            <div class="code-box" id="myShareCode">------</div>
-                            <button class="btn btn-small" id="copyCodeBtn">📋 Copy</button>
+        <!-- ==================== REWARD SECTION ==================== -->
+        <section class="reward-section" id="rewardSection">
+            <h3>🎁 Monthly Reward Goal</h3>
+            <div class="reward-card">
+                <span class="reward-icon">🤲</span>
+                <div class="reward-info">
+                    <strong>Complete This Month</strong>
+                    <p>Protect all days to unlock a special Sadaqah (charity) suggestion</p>
+                </div>
+            </div>
+            <div class="reward-progress">
+                <span id="daysNeeded">0 more days to unlock monthly reward</span>
+            </div>
+        </section>
+
+        <!-- ==================== QUICK QUOTE ==================== -->
+        <section class="quote-section">
+            <div class="quote-card">
+                <span class="quote-icon">💬</span>
+                <p class="quote-text" id="dailyQuote">"The strong person is not the one who can overpower others, but the one who controls himself when angry."</p>
+                <p class="quote-source" id="quoteSource">- Prophet Muhammad (PBUH) - Bukhari</p>
+            </div>
+        </section>
+
+        <!-- ==================== FLOATING ACTION BUTTON ==================== -->
+        <button class="settings-fab" id="settingsFab" title="Settings">⚙️</button>
+        <button class="scroll-top-fab" id="scrollTopBtn" title="Scroll to top" style="display:none;">⬆️</button>
+
+    </div>
+
+    <!-- ==================== SETTINGS MODAL ==================== -->
+    <div class="modal" id="settingsModal" style="display:none;">
+        <div class="modal-content settings-modal-content">
+            <div class="modal-header">
+                <h3>⚙️ Settings & Preferences</h3>
+                <button class="modal-close-btn" onclick="app.closeModal('settingsModal')">✕</button>
+            </div>
+            
+            <div class="modal-body">
+                <!-- Notification Settings -->
+                <div class="settings-group">
+                    <h4>🔔 Notification Reminders</h4>
+                    
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <strong>Morning Motivation</strong>
+                            <p>Start your day with intention</p>
                         </div>
-                        <div class="code-input">
-                            <label>Enter Partner's Code:</label>
-                            <input type="text" id="partnerCodeInput" placeholder="XXXXXX" maxlength="6">
-                            <button class="btn btn-primary" id="connectPartnerBtn">Connect</button>
+                        <div class="setting-controls">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="morningReminderToggle" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <input type="time" id="morningReminderTime" value="06:00" class="time-input">
                         </div>
                     </div>
-                    <button class="modal-close" id="closePartnerModal">✕</button>
-                </div>
-            </div>
-
-            <!-- Partner Progress -->
-            <div class="partner-progress-section">
-                <h3>Partners' Daily Status</h3>
-                <div class="partner-status-list" id="partnerStatusList">
-                    <p style="color: var(--text-muted); text-align: center;">Connect with partners to see their status</p>
-                </div>
-            </div>
-
-            <!-- Group Challenge -->
-            <div class="group-challenge">
-                <h3>🏆 Active Challenges</h3>
-                <div class="challenge-card">
-                    <div class="challenge-header">
-                        <span class="challenge-icon">🔥</span>
-                        <div class="challenge-info">
-                            <strong>7-Day Shield Streak</strong>
-                            <span class="challenge-participants">Join the challenge!</span>
+                    
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <strong>Evening Shield Reminder</strong>
+                            <p>Reminder before nightfall</p>
+                        </div>
+                        <div class="setting-controls">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="eveningReminderToggle" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <input type="time" id="eveningReminderTime" value="21:00" class="time-input">
                         </div>
                     </div>
-                    <div class="challenge-progress-bar">
-                        <div class="challenge-progress-fill" style="width: 0%"></div>
+                    
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <strong>Night Protection Alert</strong>
+                            <p>Late night vulnerability reminder</p>
+                        </div>
+                        <div class="setting-controls">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="nightReminderToggle" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <input type="time" id="nightReminderTime" value="23:00" class="time-input">
+                        </div>
                     </div>
-                    <span class="challenge-status" id="challengeStatus">Day 0 of 7</span>
+                    
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <strong>Missed Day Warning</strong>
+                            <p>Alert if shield not active by this time</p>
+                        </div>
+                        <div class="setting-controls">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="missedAlertToggle" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <input type="time" id="missedAlertTime" value="22:30" class="time-input">
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Community Feed -->
-            <div class="community-feed">
-                <h3>Community Highlights</h3>
-                <div class="feed-item">
-                    <span class="feed-emoji">💪</span>
-                    <p>Stay consistent! Every day your shield grows stronger.</p>
-                </div>
-                <div class="feed-item">
-                    <span class="feed-emoji">🎯</span>
-                    <p>Tip: Complete your check-in before 10 PM for best results!</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- ==================== SETTINGS TAB ==================== -->
-        <div class="tab-content" id="settingsTab">
-            <div class="settings-header">
-                <h2>⚙️ Settings & Preferences</h2>
-            </div>
-
-            <!-- Notification Settings -->
-            <div class="settings-section">
-                <h3>🔔 Notification Reminders</h3>
                 
-                <div class="setting-item">
-                    <div class="setting-info">
-                        <strong>Morning Motivation</strong>
-                        <p>Start your day with intention</p>
-                    </div>
-                    <div class="setting-control">
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="morningReminder" checked>
-                            <span class="toggle-slider"></span>
-                        </label>
-                        <input type="time" id="morningTime" value="07:00" class="time-input">
-                    </div>
-                </div>
-
-                <div class="setting-item">
-                    <div class="setting-info">
-                        <strong>Midday Check-in</strong>
-                        <p>Stay on track during the day</p>
-                    </div>
-                    <div class="setting-control">
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="middayReminder" checked>
-                            <span class="toggle-slider"></span>
-                        </label>
-                        <input type="time" id="middayTime" value="12:00" class="time-input">
+                <!-- App Preferences -->
+                <div class="settings-group">
+                    <h4>🎨 App Preferences</h4>
+                    
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <strong>Show Reflection After Shield</strong>
+                            <p>Prompt journal entry after activation</p>
+                        </div>
+                        <div class="setting-controls">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="showReflectionToggle" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
                     </div>
                 </div>
-
-                <div class="setting-item">
-                    <div class="setting-info">
-                        <strong>Evening Reflection</strong>
-                        <p>Important bedtime check-in</p>
-                    </div>
-                    <div class="setting-control">
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="eveningReminder" checked>
-                            <span class="toggle-slider"></span>
-                        </label>
-                        <input type="time" id="eveningTime" value="21:00" class="time-input">
-                    </div>
-                </div>
-
-                <div class="setting-item">
-                    <div class="setting-info">
-                        <strong>Streak Danger Alert</strong>
-                        <p>Alert if you haven't checked in by 10 PM</p>
-                    </div>
-                    <div class="setting-control">
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="dangerAlert" checked>
-                            <span class="toggle-slider"></span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Customization -->
-            <div class="settings-section">
-                <h3>🎨 Customization</h3>
                 
-                <div class="setting-item">
-                    <div class="setting-info">
-                        <strong>Theme</strong>
-                    </div>
-                    <select id="themeSelect" class="select-input">
-                        <option value="dark">Dark Shield</option>
-                        <option value="midnight">Midnight Blue</option>
-                        <option value="light">Light Mode</option>
-                    </select>
-                </div>
-
-                <div class="setting-item">
-                    <div class="setting-info">
-                        <strong>Shield Name</strong>
-                        <p>Personalize your commitment</p>
-                    </div>
-                    <input type="text" id="shieldName" value="My Daily Shield" class="text-input" maxlength="30">
+                <!-- Data Management -->
+                <div class="settings-group">
+                    <h4>💾 Data Management</h4>
+                    <button class="btn btn-secondary" id="exportDataBtn">📤 Export All Data</button>
+                    <button class="btn btn-secondary" id="importDataBtn">📥 Import Backup</button>
+                    <button class="btn btn-danger" id="resetDataBtn">🔄 Reset Everything</button>
                 </div>
             </div>
-
-            <!-- Data Management -->
-            <div class="settings-section">
-                <h3>💾 Data Management</h3>
-                
-                <button class="btn btn-primary" id="exportDataBtn">📤 Export All Data</button>
-                <button class="btn btn-secondary" id="importDataBtn">📥 Import Data</button>
-                <button class="btn btn-danger" id="resetDataBtn">🔄 Reset All Data</button>
-            </div>
-
-            <!-- About -->
-            <div class="settings-section">
-                <h3>ℹ️ About Fikr Shield</h3>
-                <p class="version-text">Version 1.0.0</p>
-                <p class="description-text">Fikr Shield helps you build self-discipline by tracking daily commitments and avoiding time-wasting activities.</p>
+            
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="saveSettingsBtn">💾 Save Settings</button>
+                <button class="btn btn-text" onclick="app.closeModal('settingsModal')">Cancel</button>
             </div>
         </div>
     </div>
 
-    <!-- Notification Permission Modal -->
+    <!-- ==================== REWARD MODAL ==================== -->
+    <div class="modal" id="rewardModal" style="display:none;">
+        <div class="modal-content reward-modal-content">
+            <div class="reward-reveal">
+                <span class="reward-big-icon" id="sadaqahIcon">🎁</span>
+                <h2>Masha'Allah! 🎉</h2>
+                <p class="reward-subtitle">You completed the full month with your shield intact!</p>
+                
+                <div class="sadaqah-suggestion">
+                    <h3 id="sadaqahTitle">Your Sadaqah Suggestion</h3>
+                    <p id="sadaqahDescription">Complete the month to unlock your reward</p>
+                    <div class="verse-box">
+                        <p class="verse-arabic" id="sadaqahArabic"></p>
+                        <p class="verse-translation" id="sadaqahVerse"></p>
+                    </div>
+                </div>
+                
+                <p class="reward-message">"The best charity is that which is given when you are healthy, inclined to be miserly, fearing poverty, and hoping to be wealthy." - Hadith</p>
+                
+                <button class="btn btn-primary reward-close-btn" id="closeRewardBtn">Alhamdulillah 🤲</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== STATISTICS MODAL ==================== -->
+    <div class="modal" id="statsModal" style="display:none;">
+        <div class="modal-content stats-modal-content">
+            <div class="modal-header">
+                <h3>📊 Your Statistics</h3>
+                <button class="modal-close-btn" onclick="app.closeModal('statsModal')">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="stats-year-header">
+                    <h4>Year: <span id="statsYear">2025</span></h4>
+                </div>
+                <div class="stats-grid-2col">
+                    <div class="stats-item">
+                        <span class="stats-value" id="statsTotalProtected">0</span>
+                        <span class="stats-label">Days Protected</span>
+                    </div>
+                    <div class="stats-item">
+                        <span class="stats-value" id="statsTotalMissed">0</span>
+                        <span class="stats-label">Days Missed</span>
+                    </div>
+                    <div class="stats-item">
+                        <span class="stats-value" id="statsSuccessRate">0%</span>
+                        <span class="stats-label">Success Rate</span>
+                    </div>
+                    <div class="stats-item">
+                        <span class="stats-value" id="statsLongestStreak">0</span>
+                        <span class="stats-label">Longest Streak</span>
+                    </div>
+                    <div class="stats-item">
+                        <span class="stats-value" id="statsMonthsCompleted">0</span>
+                        <span class="stats-label">Months Completed</span>
+                    </div>
+                    <div class="stats-item">
+                        <span class="stats-value" id="statsRewardsEarned">0</span>
+                        <span class="stats-label">Rewards Earned</span>
+                    </div>
+                    <div class="stats-item">
+                        <span class="stats-value" id="statsTotalReflections">0</span>
+                        <span class="stats-label">Reflections Written</span>
+                    </div>
+                    <div class="stats-item">
+                        <span class="stats-value" id="statsTotalProtected">0</span>
+                        <span class="stats-label">Total Protected</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== NOTIFICATION PERMISSION MODAL ==================== -->
     <div class="modal" id="notificationModal" style="display:none;">
-        <div class="modal-content">
+        <div class="modal-content notification-modal-content">
             <span class="modal-icon">🔔</span>
             <h3>Stay Protected</h3>
-            <p>Enable notifications to receive timely reminders and keep your shield strong.</p>
+            <p>Enable notifications to receive timely reminders for your shield activation. Never miss a day of protection.</p>
+            <div class="notification-benefits">
+                <span>🌅 Morning motivation</span>
+                <span>🌙 Evening reminders</span>
+                <span>⚠️ Missed day alerts</span>
+            </div>
             <button class="btn btn-primary" id="enableNotificationsBtn" type="button">
-                Enable Notifications
+                🔔 Enable Notifications
             </button>
             <button class="btn btn-text" id="skipNotificationsBtn" type="button">
                 Maybe Later
@@ -538,6 +428,27 @@
         </div>
     </div>
 
+    <!-- ==================== CHALLENGE MODAL ==================== -->
+    <div class="modal" id="challengeModal" style="display:none;">
+        <div class="modal-content challenge-modal-content">
+            <div class="modal-header">
+                <h3>🎯 Start a Challenge</h3>
+                <button class="modal-close-btn" onclick="app.closeModal('challengeModal')">✕</button>
+            </div>
+            <div class="modal-body">
+                <p>Choose your challenge duration:</p>
+                <div class="challenge-options">
+                    <button class="challenge-option" onclick="app.startChallenge(7)">7 Days</button>
+                    <button class="challenge-option" onclick="app.startChallenge(15)">15 Days</button>
+                    <button class="challenge-option" onclick="app.startChallenge(30)">30 Days</button>
+                    <button class="challenge-option" onclick="app.startChallenge(90)">90 Days</button>
+                </div>
+                <div id="challengeProgress" style="margin-top:15px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SCRIPTS ==================== -->
     <script src="app.js"></script>
 </body>
 </html>
