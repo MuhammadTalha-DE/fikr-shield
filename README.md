@@ -1,83 +1,105 @@
 # 🛡️ Fikr Shield - Self Discipline & Accountability PWA
 
-**"Fikr" (فکر) means "concern/awareness" in Arabic/Urdu - your daily shield against distractions.**
+<div align="center">
 
-A Progressive Web App that helps you build self-discipline by tracking daily commitments, avoiding time-wasting activities, and staying accountable with partners.
+![Fikr Shield](icons/icon-192.png)
+
+**"Fikr" (فکر) means "concern/awareness" — Your daily shield against distractions.**
+
+[![GitHub Pages](https://img.shields.io/badge/Live%20Demo-Online-brightgreen?style=for-the-badge)](https://muhammadtalha-de.github.io/fikr-shield/)
+[![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
+[![PWA](https://img.shields.io/badge/PWA-Ready-purple?style=for-the-badge)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)
+
+</div>
+
+---
+
+## 📖 About
+
+**Fikr Shield** is a Progressive Web App designed to help you build self-discipline by tracking daily commitments to avoid time-wasting activities. Inspired by the Islamic concept of *Jihad al-Nafs* (struggle against the self), this app transforms your daily victories into charitable actions (Sadaqah).
+
+### 🎯 The Problem
+- Time-wasting activities drain productivity and spiritual energy
+- Lack of accountability makes it hard to stay consistent
+- No tangible reward system for self-discipline
+
+### 💡 The Solution
+- **Daily Shield Activation**: One-click commitment tracking
+- **Visual Calendar**: See your entire year's progress at a glance
+- **Smart Notifications**: Timely reminders before vulnerable moments
+- **Sadaqah Rewards**: Monthly completion unlocks charity suggestions
+- **Mood Tracking**: Understand emotional patterns
+- **Reflection Journal**: Document your journey
+
+---
 
 ## ✨ Features
 
-### Core Features
-- 📅 **Daily Commitment Tracking** - One-click daily shield activation
-- 🌙 **Bedtime Reflection** - Pre-sleep check-in with journal
-- 🛡️ **Time Waster Shields** - Track avoidance of specific distractions
-- 📊 **Progress Visualization** - Animated progress rings
-- 🔥 **Streak System** - Build and maintain discipline streaks
-- 😊 **Mood Tracking** - Log your emotional state daily
+### 🛡️ Core Features
+| Feature | Description |
+|---------|-------------|
+| 📅 **Year Calendar** | 12-month navigable calendar with day boxes |
+| ✅ **One-Click Shield** | Tap any day to mark as protected |
+| 🔥 **Streak Tracking** | Consecutive day counter with milestones |
+| 📊 **Progress Bar** | Monthly completion visualization |
+| 🎁 **Sadaqah Rewards** | 12 unique charity suggestions with Quran verses |
+| 📝 **Reflection Journal** | Optional daily journal entries |
+| 😊 **Mood Tracking** | 8 mood options with encouragement messages |
 
-### 🔔 Smart Notifications
-- Morning motivation reminders
-- Midday check-in alerts  
-- Evening reflection prompts
-- Streak danger alerts (10 PM deadline)
-- Customizable notification times
+### 🔔 Notification System
+| Time | Notification | Purpose |
+|------|-------------|---------|
+| 🌅 Morning (6 AM) | Morning Motivation | Start day with intention |
+| 🌙 Evening (9 PM) | Shield Reminder | Activate before night |
+| 🌃 Night (11 PM) | Protection Alert | Late night reminder |
+| ⚠️ 10:30 PM | Missed Day Warning | Don't break your streak |
 
-### 📊 Detailed Analytics
-- Streak completion charts
-- Time wasters breakdown (doughnut chart)
-- Mood distribution tracking
-- Productivity hourly patterns
-- Activity heatmap (12-week view)
-- Export analytics reports
+### 🎯 Challenge System
+- **7-Day Challenge**: Build initial momentum
+- **15-Day Challenge**: Half-month milestone
+- **30-Day Challenge**: Full month mastery
+- **90-Day Challenge**: Quarter year of discipline
 
-### 👥 Social Accountability
-- Share codes to connect with partners
-- Track partner progress
-- Group challenges
-- Community highlights feed
-- Anonymous sharing option
+### 📊 Analytics & Stats
+- Total protected days
+- Monthly completion rate
+- Yearly success percentage
+- Longest streak record
+- Reflections count
+- Rewards earned
 
 ### 🎨 Customization
-- Multiple themes (Dark, Midnight, Light)
-- Customizable shield name
-- Adjustable reminder schedules
-- Data export/import
+- Adjustable notification times
+- Toggle individual reminders
+- Enable/disable reflection prompts
+- Dark theme optimized
 
-### 📱 PWA Features
-- Installable on any device
-- Works completely offline
-- Fast loading with service worker
-- Native app-like experience
-- Push notifications
+---
 
 ## 🚀 Live Demo
 
-Visit: `https://[your-username].github.io/fikr-shield`
+**Visit:** [https://muhammadtalha-de.github.io/fikr-shield/](https://muhammadtalha-de.github.io/fikr-shield/)
+
+### 📱 Install as PWA
+1. Open the link in Chrome/Safari on your phone
+2. Tap "Add to Home Screen"
+3. Use it like a native app — works offline!
+
+---
 
 ## 🛠️ Technology Stack
 
-- **Frontend:** HTML5, CSS3, Vanilla JavaScript
-- **Charts:** Chart.js 4.4.0
-- **Storage:** LocalStorage
-- **PWA:** Service Worker, Web App Manifest
-- **Notifications:** Web Push API
+| Technology | Usage |
+|------------|-------|
+| **HTML5** | Semantic structure |
+| **CSS3** | Custom properties, animations, responsive design |
+| **Vanilla JavaScript (ES6+)** | All application logic |
+| **Service Worker** | Offline support, caching, push notifications |
+| **Web App Manifest** | PWA installation |
+| **LocalStorage** | Data persistence |
+| **Notification API** | Push reminders |
+| **GitHub Pages** | Free hosting & deployment |
 
-## 📥 Installation
+---
 
-### As a PWA (Recommended)
-1. Visit the website on your mobile device
-2. Tap "Add to Home Screen" 
-3. Install and use like a native app!
-
-### Local Development
-```bash
-# Clone the repository
-git clone https://github.com/[your-username]/fikr-shield.git
-
-# Navigate to the project
-cd fikr-shield
-
-# Serve with any static server (e.g., Live Server for VS Code)
-# Or use Python's HTTP server:
-python -m http.server 8000
-
-# Open http://localhost:8000 in your browser
+## 📁 Project Structure
