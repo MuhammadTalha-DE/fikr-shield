@@ -82,7 +82,7 @@
                 <div class="reminder-status-bar" id="reminderStatusBar">
                     <span class="reminder-dot active"></span>
                     <span id="reminderStatusText">Evening reminder set for 9:00 PM</span>
-                    <button class="reminder-edit-btn" onclick="app.openSettings()">Edit</button>
+                    <button class="reminder-edit-btn" id="editReminderBtn">Edit</button>
                 </div>
 
                 <!-- Main Commitment Card -->
@@ -203,7 +203,6 @@
                             <span class="button-icon">🛡️</span>
                             <span class="button-text">Activate Daily Shield</span>
                         </span>
-                        <div class="button-ripple"></div>
                     </button>
 
                     <!-- Bedtime Check-in -->
@@ -356,7 +355,7 @@
             </div>
 
             <!-- Add Partner Modal -->
-            <div class="modal" id="addPartnerModal">
+            <div class="modal" id="addPartnerModal" style="display:none;">
                 <div class="modal-content">
                     <h3>Add Accountability Partner</h3>
                     <div class="partner-code-section">
@@ -371,7 +370,7 @@
                             <button class="btn btn-primary" id="connectPartnerBtn">Connect</button>
                         </div>
                     </div>
-                    <button class="modal-close" onclick="app.closeModal()">✕</button>
+                    <button class="modal-close" id="closePartnerModal">✕</button>
                 </div>
             </div>
 
@@ -379,7 +378,7 @@
             <div class="partner-progress-section">
                 <h3>Partners' Daily Status</h3>
                 <div class="partner-status-list" id="partnerStatusList">
-                    <!-- Dynamically populated -->
+                    <p style="color: var(--text-muted); text-align: center;">Connect with partners to see their status</p>
                 </div>
             </div>
 
@@ -391,13 +390,13 @@
                         <span class="challenge-icon">🔥</span>
                         <div class="challenge-info">
                             <strong>7-Day Shield Streak</strong>
-                            <span class="challenge-participants">3 participants</span>
+                            <span class="challenge-participants">Join the challenge!</span>
                         </div>
                     </div>
                     <div class="challenge-progress-bar">
-                        <div class="challenge-progress-fill" style="width: 57%"></div>
+                        <div class="challenge-progress-fill" style="width: 0%"></div>
                     </div>
-                    <span class="challenge-status">Day 4 of 7</span>
+                    <span class="challenge-status" id="challengeStatus">Day 0 of 7</span>
                 </div>
             </div>
 
@@ -405,12 +404,12 @@
             <div class="community-feed">
                 <h3>Community Highlights</h3>
                 <div class="feed-item">
-                    <span class="feed-emoji">🎉</span>
-                    <p><strong>Anonymous</strong> just reached a 30-day streak!</p>
+                    <span class="feed-emoji">💪</span>
+                    <p>Stay consistent! Every day your shield grows stronger.</p>
                 </div>
                 <div class="feed-item">
-                    <span class="feed-emoji">💪</span>
-                    <p><strong>ShieldWarrior</strong> saved 42 hours this month</p>
+                    <span class="feed-emoji">🎯</span>
+                    <p>Tip: Complete your check-in before 10 PM for best results!</p>
                 </div>
             </div>
         </div>
@@ -524,13 +523,17 @@
     </div>
 
     <!-- Notification Permission Modal -->
-    <div class="modal" id="notificationModal">
+    <div class="modal" id="notificationModal" style="display:none;">
         <div class="modal-content">
             <span class="modal-icon">🔔</span>
             <h3>Stay Protected</h3>
             <p>Enable notifications to receive timely reminders and keep your shield strong.</p>
-            <button class="btn btn-primary" id="enableNotificationsBtn">Enable Notifications</button>
-            <button class="btn btn-text" id="skipNotificationsBtn">Maybe Later</button>
+            <button class="btn btn-primary" id="enableNotificationsBtn" type="button">
+                Enable Notifications
+            </button>
+            <button class="btn btn-text" id="skipNotificationsBtn" type="button">
+                Maybe Later
+            </button>
         </div>
     </div>
 
