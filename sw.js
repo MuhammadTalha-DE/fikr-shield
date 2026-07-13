@@ -3,7 +3,7 @@
    ============================================ */
 
 const CACHE_NAME = 'fikr-shield-v1.0.1';
-const BASE_PATH = '/fikr-sheild';
+const BASE_PATH = '/fikr-shield';
 
 const ASSETS_TO_CACHE = [
     `${BASE_PATH}/`,
