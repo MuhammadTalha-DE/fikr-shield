@@ -1,5 +1,5 @@
 /* ============================================
-   FIKR SHIELD - Complete Stylesheet
+   FIKR SHIELD - Complete Fixed Stylesheet
    ============================================ */
 
 :root {
@@ -313,6 +313,7 @@ body {
     height: 8px;
     border-radius: 50%;
     background: var(--text-muted);
+    flex-shrink: 0;
 }
 
 .reminder-dot.active {
@@ -500,6 +501,7 @@ body {
 
 .checklist-card {
     cursor: pointer;
+    display: block;
 }
 
 .checklist-card-content {
@@ -529,6 +531,7 @@ body {
 
 .shield-icon-small {
     font-size: 1.5rem;
+    flex-shrink: 0;
 }
 
 .shield-info {
@@ -553,6 +556,7 @@ body {
     border-radius: 6px;
     position: relative;
     transition: var(--transition);
+    flex-shrink: 0;
 }
 
 .shield-checkbox:checked + .checklist-card-content .custom-checkbox {
@@ -584,6 +588,7 @@ body {
 
 .summary-icon {
     font-size: 1.5rem;
+    flex-shrink: 0;
 }
 
 .summary-details {
@@ -642,24 +647,8 @@ body {
     z-index: 1;
 }
 
-.button-ripple {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255,255,255,0.3);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    animation: ripple 0.6s ease-out;
-}
-
-@keyframes ripple {
-    to {
-        width: 500px;
-        height: 500px;
-        opacity: 0;
-    }
+.button-icon {
+    font-size: 1.3rem;
 }
 
 /* Bedtime Section */
@@ -734,6 +723,8 @@ body {
     cursor: pointer;
     transition: var(--transition);
     font-family: inherit;
+    display: inline-block;
+    text-align: center;
 }
 
 .btn-primary {
@@ -767,11 +758,19 @@ body {
     background: none;
     color: var(--text-secondary);
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .btn-small {
     padding: 6px 14px;
     font-size: 0.8rem;
+}
+
+.btn-save {
+    background: var(--accent-primary);
+    color: #000;
+    border: none;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -796,6 +795,7 @@ body {
     z-index: 1000;
     transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     box-shadow: var(--shadow-lg);
+    max-width: 90vw;
 }
 
 .achievement-toast.show {
@@ -810,6 +810,7 @@ body {
 
 .toast-icon {
     font-size: 2rem;
+    flex-shrink: 0;
 }
 
 .toast-message strong {
@@ -853,6 +854,116 @@ body {
 }
 
 /* ============================================
+   MODAL STYLES - FIXED
+   ============================================ */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: var(--bg-card);
+    border-radius: var(--border-radius-lg);
+    padding: 35px 30px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.modal-icon {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.modal-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.modal-content p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.modal .btn {
+    width: 100%;
+    margin: 8px 0;
+    padding: 14px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    pointer-events: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.modal .btn-primary {
+    background: var(--gradient-primary);
+    color: #000;
+    font-weight: 700;
+    border: none;
+}
+
+.modal .btn-text {
+    background: transparent;
+    color: var(--text-secondary);
+    text-decoration: underline;
+    border: none;
+    font-weight: 500;
+}
+
+.modal .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.modal-close:hover {
+    background: rgba(255,255,255,0.2);
+    color: var(--text-primary);
+}
+
+/* ============================================
    ANALYTICS TAB STYLES
    ============================================ */
 
@@ -887,6 +998,7 @@ body {
     font-size: 0.85rem;
     font-weight: 500;
     transition: var(--transition);
+    font-family: inherit;
 }
 
 .range-btn.active {
@@ -916,6 +1028,7 @@ body {
 
 .overview-icon {
     font-size: 1.8rem;
+    flex-shrink: 0;
 }
 
 .overview-info {
@@ -1064,46 +1177,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* Modal */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.modal-content {
-    background: var(--bg-card);
-    border-radius: var(--border-radius-lg);
-    padding: 30px;
-    max-width: 400px;
-    width: 90%;
-    position: relative;
-}
-
-.modal-close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: var(--text-secondary);
-    cursor: pointer;
-}
-
 /* Code Display */
 .code-display {
     text-align: center;
@@ -1136,6 +1209,12 @@ body {
     font-size: 1rem;
     text-align: center;
     letter-spacing: 3px;
+    font-family: inherit;
+}
+
+.code-input input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
 }
 
 /* Challenge Card */
@@ -1154,6 +1233,7 @@ body {
 
 .challenge-icon {
     font-size: 1.5rem;
+    flex-shrink: 0;
 }
 
 .challenge-participants {
@@ -1191,8 +1271,13 @@ body {
     border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
+.feed-item:last-child {
+    border-bottom: none;
+}
+
 .feed-emoji {
     font-size: 1.2rem;
+    flex-shrink: 0;
 }
 
 /* ============================================
@@ -1201,6 +1286,10 @@ body {
 
 .settings-header {
     margin-bottom: 25px;
+}
+
+.settings-header h2 {
+    font-size: 1.5rem;
 }
 
 .settings-section {
@@ -1312,6 +1401,7 @@ input:checked + .toggle-slider:before {
 
 .select-input {
     min-width: 150px;
+    cursor: pointer;
 }
 
 .version-text {
@@ -1324,6 +1414,17 @@ input:checked + .toggle-slider:before {
     font-size: 0.85rem;
     line-height: 1.6;
     margin-top: 8px;
+}
+
+/* Settings buttons full width */
+.settings-section .btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.settings-section .btn:last-child {
+    margin-bottom: 0;
 }
 
 /* ============================================
