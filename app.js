@@ -1205,7 +1205,7 @@ class FikrShield {
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/fikr-sheild/sw.js', {
+        navigator.serviceWorker.register('/fikr-shield/sw.js', {
             scope: '/fikr-sheild/'
         })
             .then(reg => console.log('Service Worker registered successfully:', reg.scope))
