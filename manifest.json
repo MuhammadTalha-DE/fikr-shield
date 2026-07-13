@@ -5,14 +5,12 @@
     "start_url": "/fikr-shield/",
     "scope": "/fikr-shield/",
     "display": "standalone",
-    "display_override": ["standalone", "fullscreen", "minimal-ui"],
-    "orientation": "portrait-primary",
     "background_color": "#0d1b2a",
     "theme_color": "#0d1b2a",
-    "categories": ["productivity", "health", "lifestyle", "utilities"],
+    "orientation": "portrait-primary",
+    "categories": ["productivity", "health", "lifestyle"],
     "lang": "en",
     "dir": "ltr",
-    "prefer_related_applications": false,
     "icons": [
         {
             "src": "icons/icon-72.png",
@@ -62,62 +60,5 @@
             "type": "image/png",
             "purpose": "any maskable"
         }
-    ],
-    "screenshots": [
-        {
-            "src": "icons/screenshot-home.png",
-            "sizes": "1080x1920",
-            "type": "image/png",
-            "form_factor": "narrow",
-            "label": "Home screen with calendar and shield activation"
-        },
-        {
-            "src": "icons/screenshot-stats.png",
-            "sizes": "1080x1920",
-            "type": "image/png",
-            "form_factor": "narrow",
-            "label": "Statistics and progress view"
-        }
-    ],
-    "shortcuts": [
-        {
-            "name": "Activate Shield",
-            "short_name": "Shield",
-            "description": "Quickly activate your daily shield",
-            "url": "/fikr-shield/?action=activate",
-            "icons": [
-                {
-                    "src": "icons/icon-96.png",
-                    "sizes": "96x96"
-                }
-            ]
-        },
-        {
-            "name": "View Calendar",
-            "short_name": "Calendar",
-            "description": "View your monthly progress calendar",
-            "url": "/fikr-shield/?action=calendar",
-            "icons": [
-                {
-                    "src": "icons/icon-96.png",
-                    "sizes": "96x96"
-                }
-            ]
-        },
-        {
-            "name": "Settings",
-            "short_name": "Settings",
-            "description": "Configure notification reminders",
-            "url": "/fikr-shield/?action=settings",
-            "icons": [
-                {
-                    "src": "icons/icon-96.png",
-                    "sizes": "96x96"
-                }
-            ]
-        }
-    ],
-    "related_applications": [],
-    "iarc_rating_id": "",
-    "edge_side_panel": {}
+    ]
 }
